@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 export default function Sidebar() {
   return (
-    <div className=" flex flex-col gap-4">
+    <aside className=" flex flex-col gap-4">
       <div className="about grid justify-items-stretch gap-2">
         <span className=" border-y-2 border-gray-900 justify-self-auto text-center">
           ABOUT ME
@@ -49,6 +49,6 @@ export default function Sidebar() {
           <AiFillGithub />
         </div>
       </div>
-    </div>
+    </aside>
   );
 }
