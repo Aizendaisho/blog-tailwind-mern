@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className=" grid grid-flow-row-dense grid-cols-4 mt-4 ">
+      <div className=" grid grid-flow-row-dense grid-cols-4 mt-4 gap-4 m-2 ">
         <Posts />
         <Sidebar />
       </div>
