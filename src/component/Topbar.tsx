@@ -8,9 +8,12 @@ import {
 import { FcSearch } from "react-icons/fc";
 import photo from "../assets/img/photo.webp";
 import { Link } from "react-router-dom";
-const user = false;
+import { userStore } from "../store/usuarioStore";
+
 
 export default function Topbar() {
+  const user = userStore((state) => state.exist)
+  const cambio = userStore((state) => state.cambio)
   return (
     <div className="shadow-md w-full h-20 bg-white  text-gray-400 sticky top-0 flex items-center justify-between p-4 z-20 ">
       <div className="  flex gap-3 text-xl">
@@ -32,6 +35,7 @@ export default function Topbar() {
             <Link to="/write">WRITE</Link>
           </li>
           <li>{user && "LOGOUT"}</li>
+          <li onClick={()=>cambio()}>user</li>
         </ul>
       </nav>
       {user ? (

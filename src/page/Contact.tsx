@@ -1,7 +1,16 @@
-import React from 'react'
+import { userStore } from "../store/usuarioStore"
+
 
 export default function Contact() {
+
+
+
+
+
   return (
-    <div>Contact</div>
+    <div>Contact
+      
+      
+     </div>
   )
 }

@@ -9,21 +9,31 @@ import Register from "./page/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./page/About";
 import Contact from "./page/Contact";
+import ProtectedRoutes from './protegidas/ProtectedRoutes';
+import { userStore } from './store/usuarioStore';
 
-const user = false;
+
+
 export default function App() {
+  const user = userStore((state) => state.exist)
+  const cambio = userStore((state) => state.cambio)
   return (
     <Router>
       <Topbar />
       <Routes>
         <Route index path="/" element={<Home />} />
-        <Route path="/login" element={user ? <Home /> : <LogOut />} />
-        <Route path="/register" element={user ? <Home /> : <Register />} />
-        <Route path="/write" element={user ? <Write /> : <Register />} />
-        <Route path="/about" element={user ? <About /> : <Register />} />
-        <Route path="/contact" element={user ? <Contact /> : <Register />} />
-        <Route path="/settings" element={user ? <Settings /> : <Register />} />
+        <Route element={<ProtectedRoutes isAllowed={!user} />}>
+          <Route path="/login" element={<LogOut />} />
+          <Route path="/register" element={<Register />} />
+          </Route>
+        <Route element={<ProtectedRoutes isAllowed={user} />}>
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+        <Route path="/write" element={ <Write />} />
         <Route path="./post/:postId" element={<Single />} />
+
       </Routes>
     </Router>
   );
