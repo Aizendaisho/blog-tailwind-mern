@@ -7,7 +7,8 @@ const port = 8000
 
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.MONGO_URL)
-  .then(() => console.log('Se conecto a la base de datos!'));
+  .then(() => console.log('Se conecto a la base de datos!'))
+  .catch((err)=> console.log(err));
 
 
 
