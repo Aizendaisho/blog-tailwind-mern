@@ -21,7 +21,7 @@ export default function Write() {
             type="text"
             placeholder="Titulo"
             autoFocus={true}
-            className=" w-full focus:border-none"
+            className=" w-full focus:border-none outline-none"
           />
         </div>
         <div className="grupo ">
@@ -29,7 +29,7 @@ export default function Write() {
             name=""
             id=""
             placeholder="Dinos tu historia"
-            className=" resize-none w-full h-auto focus:border-none"
+            className=" resize-none w-full h-auto focus:border-none outline-none"
           ></textarea>
         </div>
         <button className=" bg-green-600 text-white px-3 py-1 justify-self-end text-xl rounded-lg">
