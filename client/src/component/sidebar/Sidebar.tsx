@@ -1,12 +1,16 @@
 import React from "react";
 import aboutPhoto from "../../assets/img/about.webp";
+import _ from "lodash";
 import {
   AiFillInstagram,
   AiFillFacebook,
   AiFillTwitterCircle,
   AiFillGithub,
 } from "react-icons/ai";
+import { useApiCat } from "../../hooks/useApi";
+import { Link } from "react-router-dom";
 export default function Sidebar() {
+  const { catsFetched } = useApiCat();
   return (
     <aside className=" flex flex-col gap-4">
       <div className="about grid justify-items-stretch gap-2">
@@ -30,12 +34,11 @@ export default function Sidebar() {
           CATEGORIES
         </span>
         <ul className=" grid grid-cols-2 gap-2 justify-self-center">
-          <li>Life</li>
-          <li>Music</li>
-          <li>Style</li>
-          <li>Sport</li>
-          <li>Tech</li>
-          <li>Cinema</li>
+          {catsFetched.map((cat) => (
+            <Link key={cat._id} to={`/?cat=${cat.name}`}>
+              <li>{_.upperFirst(cat.name)}</li>
+            </Link>
+          ))}
         </ul>
       </div>
 

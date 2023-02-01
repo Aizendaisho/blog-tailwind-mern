@@ -10,3 +10,11 @@ export type PostsType = {
     updatedAt:  Date;
     __v:        number;
 }
+
+export interface Categories {
+    _id: string;
+    name: string;
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
+}

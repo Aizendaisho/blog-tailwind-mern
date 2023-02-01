@@ -1,6 +1,7 @@
 import React from "react";
 import postImg from "../../assets/img/post.jpeg";
 import { PostsType } from "../../types";
+import { Link } from "react-router-dom";
 
 export default function Post({ post }: { post: PostsType }) {
   return (
@@ -14,10 +15,12 @@ export default function Post({ post }: { post: PostsType }) {
             </span>
           ))}
         </div>
-        <span className="Titulo text-xl font-bold ">{post.title}</span>
+        <Link to={`/post/${post._id}`}>
+          <span className="Titulo text-xl font-bold ">{post.title}</span>
+        </Link>
         <hr />
         <span className="postDate text-center  text-gray-400 text-sm">
-          1 hr ago
+          {new Date(post.createdAt).toDateString()}
         </span>
       </div>
       <p className="descripcion overflow-hidden [text-overflow: ellipsis] [display: -webkit-box] [-webkit-line-clamp: 4] [-webkit-box-orient:vertical] text-justify">
