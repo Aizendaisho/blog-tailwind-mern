@@ -26,6 +26,11 @@ export default function Home() {
     { initialData: [] }
   );
 
+
+
+  if(isLoading) return <h1> Cargando....</h1>
+
+
   if (postUser) {
     return (
       <>
