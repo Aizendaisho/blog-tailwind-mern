@@ -4,9 +4,14 @@ import { PostsType } from "../../types";
 import { Link } from "react-router-dom";
 
 export default function Post({ post }: { post: PostsType }) {
+  const PF = "http://localhost:8080/images/";
   return (
     <div className=" mb-8 flex flex-col items-center justify-center gap-2">
-      <img src={postImg} alt="postImg" className="rounded-md" />
+      <img
+        src={post?.photo ? `${PF}${post?.photo}` : postImg}
+        alt="postImg"
+        className="rounded-md"
+      />
       <div className="postInfo text-center">
         <div className="tags flex gap-4 items-center justify-center text-gray-400 text-base mb-2">
           {post.categories?.map((cat: string) => (

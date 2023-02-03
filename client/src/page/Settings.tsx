@@ -1,9 +1,40 @@
-import React from "react";
 import Sidebar from "../component/sidebar/Sidebar";
 import { AiOutlineUser } from "react-icons/ai";
 import about from "../assets/img/post.jpeg";
+import { userStore } from "../store/usuarioStore";
+import { useState } from "react";
+import api from "../api";
 
 export default function Settings() {
+  const PF = "http://localhost:8080/images/";
+  const user = userStore((state) => state.user);
+  const cambioUser = userStore((state) => state.cambioUser);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [file, setFile] = useState(null);
+
+  const handlerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const updateUser = { userId: user?._id, username, email, password };
+    if (file) {
+      const data = new FormData();
+      const filename = Date.now() + file.name;
+      data.append("name", filename);
+      data.append("file", file);
+      updateUser.profilePicture = filename;
+      try {
+        await api.post("/upload", data);
+      } catch (error) {}
+    }
+
+    try {
+      const res = await api.put(`/users/${user?._id}`, updateUser);
+      await cambioUser(res.data);
+      await userStore.persist.rehydrate();
+    } catch (error) {}
+  };
+
   return (
     <div className=" grid grid-flow-row-dense grid-cols-4 mt-4 gap-4 m-2 w-full">
       <div className=" col-span-3">
@@ -11,40 +42,54 @@ export default function Settings() {
           <span className=" text-4xl text-red-400">Update your Acount</span>
           <span className=" text-red-400 cursor-pointer">Delete Acount</span>
         </div>
-        <form className="flex flex-col">
+        <form onSubmit={handlerSubmit} className="flex flex-col">
           <label htmlFor="" className=" text-xl">
             Profile Picture
           </label>
           <div className="img flex items-center gap-4 my-4">
             <img
-              src={about}
+              src={file ? URL.createObjectURL(file) : user?.profilePicture}
               alt=""
               className=" w-20 h-20 rounded-md object-cover"
             />
             <label htmlFor="fileInput">
               <AiOutlineUser className="cursor-pointer w-7 h-7 bg-red-300 text-white flex items-center justify-center rounded-full" />
             </label>
-            <input type="file" id="fileInput" className=" hidden" />
+            <input
+              onChange={(e) => setFile(e.target.files[0])}
+              type="file"
+              id="fileInput"
+              className=" hidden"
+            />
           </div>
           <div className="labels flex flex-col gap-4 text-xl">
             <label htmlFor="">Username </label>
             <input
               className=" outline-none shadow-sm"
               type="text"
-              placeholder="Araldi Garcia"
+              placeholder={user?.username}
+              onChange={(e) => setUsername(e.target.value)}
             />
 
             <label htmlFor="">Email </label>
             <input
               className=" outline-none shadow-sm"
               type="email"
-              placeholder="AraldiGarcia@hotmail.com"
+              placeholder={user?.email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <label htmlFor="">Password </label>
-            <input className=" outline-none shadow-sm" type="password" />
+            <input
+              className=" outline-none shadow-sm"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-            <button className=" self-center bg-green-500 text-white px-7 py-1 rounded-lg	">
+            <button
+              type="submit"
+              className=" self-center bg-green-500 text-white px-7 py-1 rounded-lg	"
+            >
               Update
             </button>
           </div>
@@ -53,4 +98,7 @@ export default function Settings() {
       <Sidebar />
     </div>
   );
+}
+function navegate(arg0: string) {
+  throw new Error("Function not implemented.");
 }

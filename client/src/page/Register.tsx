@@ -46,7 +46,7 @@ export default function Register() {
         </label>
         <input
           className=" p-2 rounded-md text-black outline-none"
-          type="text"
+          type="email"
           placeholder="Enter your email..."
           onChange={(e) => setEmail(e.target.value)}
         />

@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import useApi from "../hooks/useApi";
-import { PostsType } from "../types";
+
 
 type UserAuth = {
   _id: string;
@@ -33,11 +32,11 @@ export const userStore = create(
       user: null,
       isFetching: false,
       error: false,
-      cambioFetch: () => set((state) => ({ isFetching: true })),
-      cambioFetchFalse: () => set((state) => ({ isFetching: false })),
-      cambioError: () => set((state) => ({ error: true })),
-      cambioErrorFalse: () => set((state) => ({ error: false })),
-      cambioUser: (obj) => set((state) => ({ user: obj })),
+      cambioFetch: () => set(() => ({ isFetching: true })),
+      cambioFetchFalse: () => set(() => ({ isFetching: false })),
+      cambioError: () => set(() => ({ error: true })),
+      cambioErrorFalse: () => set(() => ({ error: false })),
+      cambioUser: (obj) => set(() => ({ user: obj })),
     }),
     {
       name: "user",
