@@ -15,7 +15,7 @@ import { userStore } from './store/usuarioStore';
 
 
 export default function App() {
-  const user = userStore((state) => state.exist);
+  const user = userStore((state) => state.user);
   return (
     <Router>
       <Topbar />
@@ -25,7 +25,7 @@ export default function App() {
           <Route path="/login" element={<LogOut />} />
           <Route path="/register" element={<Register />} />
         </Route>
-        <Route element={<ProtectedRoutes isAllowed={user} />}>
+        <Route element={<ProtectedRoutes isAllowed={!!user} />}>
           <Route path="/settings" element={<Settings />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

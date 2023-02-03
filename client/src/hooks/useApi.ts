@@ -10,7 +10,10 @@ const useApi =()=>{
         async () => {
           return await api.get<PostsType[]>("/posts").then((res) => res.data);
         },
-        { initialData: [] }
+        {
+           initialData: [],
+
+          }
       );
 
       return {postsFetched, isLoading, isFetched}
@@ -24,7 +27,9 @@ export const useApiCat =()=>{
       async () => {
         return await api.get<Categories[]>("/categories").then((res) => res.data);
       },
-      { initialData: [] }
+      { initialData: [],
+
+        }
     );
 
     return {catsFetched, isLoading, isFetched}

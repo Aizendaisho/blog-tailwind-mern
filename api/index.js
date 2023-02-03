@@ -8,14 +8,8 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const cors = require("cors");
-const port = 8000;
+const port = 8080;
 dotenv.config();
-
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//   next();
-// });
 
 app.use(cors());
 

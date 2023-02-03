@@ -12,8 +12,8 @@ import { userStore } from "../store/usuarioStore";
 
 
 export default function Topbar() {
-  const user = userStore((state) => state.exist)
-  const cambio = userStore((state) => state.cambio)
+  const user = userStore((state) => state.user);
+  const cambio = userStore((state) => state.cambioUser);
   return (
     <div className="shadow-md w-full h-20 bg-white  text-gray-400 sticky top-0 flex items-center justify-between p-4 z-20 ">
       <div className="  flex gap-3 text-xl">
@@ -34,14 +34,15 @@ export default function Topbar() {
           <li>
             <Link to="/write">WRITE</Link>
           </li>
-          <li>{user && "LOGOUT"}</li>
-          <li onClick={()=>cambio()}>user</li>
+          <li className="cursor-pointer" onClick={() => cambio(null)}>
+            {user && "LOGOUT"}
+          </li>
         </ul>
       </nav>
       {user ? (
         <div className=" flex gap-2 items-baseline">
           <img
-            src={photo}
+            src={user.profilePicture || photo}
             alt="photo"
             className=" w-10 h-10 rounded-full object-contain"
           />

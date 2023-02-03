@@ -23,9 +23,11 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
+    if (!user) throw new Error("wrong credentials");
     !user && res.status(400).json("wrong credentials");
 
-    const validate = await bcrypt.compare(req.body.password, user.password);
+    const validate = bcrypt.compare(req.body.password, user.password);
+    if (!validate) throw new Error("wrong password");
     !validate && res.status(400).json("wrong credentials");
 
     const { password, ...other } = user._doc;
@@ -36,3 +38,4 @@ router.post("/login", async (req, res) => {
 });
 
 module.exports = router;
+
