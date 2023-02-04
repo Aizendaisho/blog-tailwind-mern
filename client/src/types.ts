@@ -17,3 +17,14 @@ export interface Categories {
   updatedAt: Date;
   __v: number;
 }
+
+export interface Archivo {
+  
+    lastModified: number
+    lastModifiedDate: Date
+    name:string
+    size: number
+    type: string
+    webkitRelativePath: string
+    
+}

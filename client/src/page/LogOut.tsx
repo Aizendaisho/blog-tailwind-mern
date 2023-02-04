@@ -70,7 +70,7 @@ export default function LogOut() {
           Username
         </label>
         <input
-          className=" p-2 rounded-md text-black outline-none"
+          className="input input-ghost w-full max-w-xs "
           type="text"
           placeholder="Enter your username..."
           ref={userRef}
@@ -84,14 +84,14 @@ export default function LogOut() {
           Password
         </label>
         <input
-          className=" p-2 rounded-md text-black outline-none"
+          className="input input-ghost w-full max-w-xs"
           type="password"
           ref={passwordRef}
         />
 
         <button
           type="submit"
-          className=" px-8 py-1 bg-green-500 text-xl rounded-md disabled:bg-slate-100 disabled:text-gray-500"
+          className=" px-8 py-1 btn btn-accent text-white   disabled:bg-slate-100 disabled:text-gray-500"
           disabled={isFetching}
         >
           Login

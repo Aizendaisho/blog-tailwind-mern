@@ -16,7 +16,7 @@ export default function Settings() {
 
   const handlerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const updateUser = { userId: user?._id, username, email, password };
+    const updateUser = { userId: user?._id, username, email, password,profilePicture: "" };
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
@@ -48,7 +48,7 @@ export default function Settings() {
           </label>
           <div className="img flex items-center gap-4 my-4">
             <img
-              src={file ? URL.createObjectURL(file) : user?.profilePicture}
+              src={file ? URL.createObjectURL(file) :PF+user?.profilePicture}
               alt=""
               className=" w-20 h-20 rounded-md object-cover"
             />

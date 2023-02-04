@@ -45,7 +45,7 @@ export default function Register() {
           Email
         </label>
         <input
-          className=" p-2 rounded-md text-black outline-none"
+          className=" input input-ghost w-full max-w-xs"
           type="email"
           placeholder="Enter your email..."
           onChange={(e) => setEmail(e.target.value)}
@@ -54,7 +54,7 @@ export default function Register() {
           Username
         </label>
         <input
-          className=" p-2 rounded-md text-black outline-none"
+          className=" input input-ghost w-full max-w-xs"
           type="text"
           placeholder="Enter your Username..."
           onChange={(e) => setUsername(e.target.value)}
@@ -68,12 +68,12 @@ export default function Register() {
           Password
         </label>
         <input
-          className=" p-2 rounded-md text-black outline-none"
+          className="input input-ghost w-full max-w-xs"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className=" px-8 py-1 bg-gray-400 text-xl rounded-md ">
+        <button className=" btn btn-accent text-white px-8 ">
           Register
         </button>
         {error && (
@@ -82,7 +82,7 @@ export default function Register() {
           </span>
         )}
       </form>
-      <button className="absolute top-24 right-8  bg-green-600 rounded-md text-2xl px-6 py-1">
+      <button className="absolute top-24 right-8  btn btn-success px-6 py-1 text-white">
         <Link to="/login">Login</Link>
       </button>
     </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import Topbar from './component/Topbar'
 import Home from './page/Home'
 import Single from "./page/Single";
@@ -11,6 +10,7 @@ import About from "./page/About";
 import Contact from "./page/Contact";
 import ProtectedRoutes from './protegidas/ProtectedRoutes';
 import { userStore } from './store/usuarioStore';
+import Footer from './component/Footer';
 
 
 
@@ -33,6 +33,7 @@ export default function App() {
         <Route path="/write" element={<Write />} />
         <Route path="/post/:postId" element={<Single />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

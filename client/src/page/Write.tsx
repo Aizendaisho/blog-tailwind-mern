@@ -6,18 +6,21 @@ import api from "../api";
 import { userStore } from "../store/usuarioStore";
 import { useNavigate } from "react-router-dom";
 
+
+
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null );
   const navegate = useNavigate();
   const user = userStore((state) => state.user);
 
   const handlerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newPost = { username: user?.username, title, desc, file };
+    const newPost = { username: user?.username, title, desc, file, photo: "" };
     if (file) {
       const data = new FormData();
+      console.log(file)
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
@@ -33,7 +36,7 @@ export default function Write() {
     } catch (error) {}
   };
   return (
-    <div className="m-2 pt-14 grid place-content-center h-max gap-2 w-full">
+    <div className="m-2 pt-14 grid place-content-center gap-2 w-full h-screen">
       <form
         onSubmit={handlerSubmit}
         className=" grid gap-4 justify-items-stretch"
@@ -84,3 +87,4 @@ export default function Write() {
     </div>
   );
 }
+{}
