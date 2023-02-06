@@ -65,7 +65,7 @@ export default function Write() {
             placeholder="Titulo"
             onChange={(e: any) => setTitle(e.target.value)}
             autoFocus={true}
-            className=" w-full focus:border-none outline-none"
+            className="  focus:border-none outline-none input w-full max-w-xs"
           />
         </div>
         <div className="grupo ">
@@ -74,12 +74,12 @@ export default function Write() {
             id=""
             placeholder="Dinos tu historia"
             onChange={(e: any) => setDesc(e.target.value)}
-            className=" resize-none w-full h-auto focus:border-none outline-none"
+            className=" resize-none w-full h-auto focus:border-none outline-none textarea textarea-ghost"
           ></textarea>
         </div>
         <button
           type="submit"
-          className=" bg-green-600 text-white px-3 py-1 justify-self-end text-xl rounded-lg"
+          className="btn  bg-green-600 text-white px-3 py-1 justify-self-end text-xl rounded-lg"
         >
           Publicar{" "}
         </button>

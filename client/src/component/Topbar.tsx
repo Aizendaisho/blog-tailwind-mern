@@ -17,7 +17,7 @@ export default function Topbar() {
   const PF = "http://localhost:8080/images/";
 
   return (
-    <div className="shadow-md w-full h-20 bg-white  text-gray-400 sticky top-0 flex items-center justify-between p-4 z-20 ">
+    <div className="navbar bg-base-100 shadow-md w-full h-20  text-gray-400 sticky top-0 flex items-center justify-between p-4 z-20 ">
       <div className="  flex gap-3 text-xl">
         <AiFillFacebook /> <AiFillInstagram /> <AiFillTwitterCircle />
         <AiFillGithub />
@@ -25,16 +25,24 @@ export default function Topbar() {
       <nav className=" ">
         <ul className=" flex items-center justify-around gap-5 text-2xl font-mono">
           <li>
-            <Link to="/">HOME</Link>
+            <Link className="btn btn-ghost normal-case text-xl" to="/">
+              HOME
+            </Link>
           </li>
           <li>
-            <Link to="/about">ABOUT</Link>
+            <Link className="btn btn-ghost normal-case text-xl" to="/about">
+              ABOUT
+            </Link>
           </li>
           <li>
-            <Link to="/contact">CONTACT</Link>
+            <Link className="btn btn-ghost normal-case text-xl" to="/contact">
+              CONTACT
+            </Link>
           </li>
           <li>
-            <Link to="/write">WRITE</Link>
+            <Link className="btn btn-ghost normal-case text-xl" to="/write">
+              WRITE
+            </Link>
           </li>
           <li className="cursor-pointer" onClick={() => cambio(null)}>
             {user && "LOGOUT"}
@@ -47,7 +55,7 @@ export default function Topbar() {
             <img
               src={PF + user.profilePicture || photo}
               alt="photo"
-              className=" w-14 h-14 rounded-full object-contain cursor-pointer"
+              className=" w-16 h-16 rounded-full object-contain cursor-pointer"
             />
           </Link>
           <FcSearch className=" text-2xl" />

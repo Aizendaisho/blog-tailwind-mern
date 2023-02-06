@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 export default function Post({ post }: { post: PostsType }) {
   const PF = "http://localhost:8080/images/";
   return (
-    <div className=" mb-8 flex flex-col items-center justify-center gap-2">
+    <div className=" mb-8 flex flex-col items-center justify-center gap-2 shadow-lg">
       <img
         src={post?.photo ? `${PF}${post?.photo}` : postImg}
         alt="postImg"
-        className="rounded-md"
+        className="rounded-md max-h-64 shadow-md"
       />
       <div className="postInfo text-center">
         <div className="tags flex gap-4 items-center justify-center text-gray-400 text-base mb-2">
@@ -28,9 +28,9 @@ export default function Post({ post }: { post: PostsType }) {
           {new Date(post.createdAt).toDateString()}
         </span>
       </div>
-      <p className="descripcion overflow-hidden [text-overflow: ellipsis] [display: -webkit-box] [-webkit-line-clamp: 4] [-webkit-box-orient:vertical] text-justify">
-        {post.desc}
-      </p>
+      <div className="desc h-16 w-4/5 ">
+        <p className="text-center line-clamp-2 ">{post.desc}</p>
+      </div>
     </div>
   );
 }

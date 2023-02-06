@@ -70,14 +70,14 @@ export default function LogOut() {
           Username
         </label>
         <input
-          className="input input-ghost w-full max-w-xs "
+          className="input input-ghost w-full max-w-xs  placeholder:text-white"
           type="text"
           placeholder="Enter your username..."
           ref={userRef}
         />
 
         <label
-          className=" text-xl"
+          className=" text-xl placeholder:text-white"
           htmlFor=""
           placeholder="Enter your password..."
         >

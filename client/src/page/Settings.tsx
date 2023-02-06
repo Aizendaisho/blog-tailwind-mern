@@ -12,11 +12,17 @@ export default function Settings() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
 
   const handlerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const updateUser = { userId: user?._id, username, email, password,profilePicture: "" };
+    const updateUser = {
+      userId: user?._id,
+      username,
+      email,
+      password,
+      profilePicture: "",
+    };
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
@@ -48,7 +54,7 @@ export default function Settings() {
           </label>
           <div className="img flex items-center gap-4 my-4">
             <img
-              src={file ? URL.createObjectURL(file) :PF+user?.profilePicture}
+              src={file ? URL.createObjectURL(file) : PF + user?.profilePicture}
               alt=""
               className=" w-20 h-20 rounded-md object-cover"
             />
@@ -56,16 +62,18 @@ export default function Settings() {
               <AiOutlineUser className="cursor-pointer w-7 h-7 bg-red-300 text-white flex items-center justify-center rounded-full" />
             </label>
             <input
-              onChange={(e) => setFile(e.target.files[0])}
+              onChange={(e) =>
+                setFile(e.target.files ? e.target.files[0] : null)
+              }
               type="file"
               id="fileInput"
-              className=" hidden"
+              className=" hidden "
             />
           </div>
           <div className="labels flex flex-col gap-4 text-xl">
             <label htmlFor="">Username </label>
             <input
-              className=" outline-none shadow-sm"
+              className=" outline-none shadow-sm input w-full max-w-xs"
               type="text"
               placeholder={user?.username}
               onChange={(e) => setUsername(e.target.value)}
@@ -73,7 +81,7 @@ export default function Settings() {
 
             <label htmlFor="">Email </label>
             <input
-              className=" outline-none shadow-sm"
+              className=" outline-none shadow-sm input w-full max-w-xs"
               type="email"
               placeholder={user?.email}
               onChange={(e) => setEmail(e.target.value)}
@@ -81,14 +89,14 @@ export default function Settings() {
 
             <label htmlFor="">Password </label>
             <input
-              className=" outline-none shadow-sm"
+              className=" outline-none shadow-sm input w-full max-w-xs"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
 
             <button
               type="submit"
-              className=" self-center bg-green-500 text-white px-7 py-1 rounded-lg	"
+              className=" btn self-center bg-green-500 text-white px-7 py-1 rounded-lg	"
             >
               Update
             </button>
@@ -98,7 +106,4 @@ export default function Settings() {
       <Sidebar />
     </div>
   );
-}
-function navegate(arg0: string) {
-  throw new Error("Function not implemented.");
 }

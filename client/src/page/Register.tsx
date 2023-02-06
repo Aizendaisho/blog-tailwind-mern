@@ -45,7 +45,7 @@ export default function Register() {
           Email
         </label>
         <input
-          className=" input input-ghost w-full max-w-xs"
+          className=" input input-ghost w-full max-w-xs placeholder:text-white"
           type="email"
           placeholder="Enter your email..."
           onChange={(e) => setEmail(e.target.value)}
@@ -54,7 +54,7 @@ export default function Register() {
           Username
         </label>
         <input
-          className=" input input-ghost w-full max-w-xs"
+          className=" input input-ghost w-full max-w-xs placeholder:text-white"
           type="text"
           placeholder="Enter your Username..."
           onChange={(e) => setUsername(e.target.value)}
@@ -73,9 +73,7 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className=" btn btn-accent text-white px-8 ">
-          Register
-        </button>
+        <button className=" btn btn-accent text-white px-8 ">Register</button>
         {error && (
           <span className=" rounded p-2 justify-self-center text-center bg-slate-200 text-red-500">
             Algo salio mal
